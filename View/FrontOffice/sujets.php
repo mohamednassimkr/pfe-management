@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../../Model/sujet.php';
-require_once __DIR__ . '/../../config.php';
+require_once _DIR_ . '/../../Model/sujet.php';
+require_once _DIR_ . '/../../config.php';
 $pdo = config::getConnexion();
 session_start();
 $pageTitle = 'Sujets';
@@ -37,9 +37,7 @@ include 'templates/header.php';
                         <?= $sujet['etudiant_name'] ? htmlspecialchars($sujet['etudiant_name']) : 'Non attribué' ?>
                     </span>
                 </div>
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'etudiant' && isset($_SESSION['user_id']) && $sujet['etudiant_id'] == $_SESSION['user_id']): ?>
-                    <a href="soumettre_document.php?sujet_id=<?= $sujet['id'] ?>" class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition block text-center mt-2">Soumettre un Livrable</a>
-                <?php endif; ?>
+                <a href="soumettre_document.php?sujet_id=<?= $sujet['id'] ?>" class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition block text-center mt-2">Soumettre un Livrable</a>
             </div>
             <div class="flex flex-col gap-2 mt-4">
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'etudiant' && !$sujet['etudiant_name']): ?>
